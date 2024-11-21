@@ -233,8 +233,8 @@ class Block3D(nn.Module):
             D, H, W = x.shape[1], x.shape[2], x.shape[3]
             x, pad_dhw = window_partition3D(x, self.window_size)
 
-        # x = x + self.mlp(self.norm2(x)) 原来
-        if spatial_or_not == False:  # 串行
+        # x = x + self.mlp(self.norm2(x))
+        if spatial_or_not == False:  
             x = self.attn(x)
             x = self.adapter1(x)
             if self.window_size > 0:
