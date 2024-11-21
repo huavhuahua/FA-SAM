@@ -378,83 +378,12 @@ img_datas1 = [
 
 # t1ce label1
 # img_datas = [
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/UPENN_train_t1ce_label1'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/UCSF_train_t1ce_label1'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/RHUH_train_0_t1ce_label1'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_SSA_train_t1ce_label1'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2021_train_t1ce_label1'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_PED_train_t1ce_label1'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_MET_train_t1ce_label1'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_MEN_train_t1ce_label1']
 # ]
 
 # dataset_weight = [
-#     102,
-#     281,
-#     28,
-#     # 39,
-#     853,
-#     # 69,
-#     # 113,
-#     # 237
 # ]
-
-
-# t2 label2
-# img_datas = [
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/UPENN_train_t2_label2'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/UCSF_train_t2_label2'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/RHUH_train_0_t2_label2'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_SSA_train_t2_label2'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2021_train_t2_label2'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_PED_train_t2_label2'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_MET_train_t2_label2'],
-# # ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_MEN_train_t2_label2']
-# ]
-
-# dataset_weight = [
-#     103,
-#     351,
-#     28,
-#     # 42,
-#     876,
-#     # 40,
-#     # 162,
-#     # 375
-# ]
-
-# t1ce label3
-img_datas = [
-['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/UPENN_train_t1ce_label4'],
-['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/UCSF_train_t1ce_label4'],
-['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/RHUH_train_0_t1ce_label3'],
-['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_SSA_train_t1ce_label3'],
-['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2021_train_t1ce_label4'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_PED_train_t1ce_label3'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_MET_train_t1ce_label3'],
-# ['/home1/HWGroup/xrwu/Data/SAM_Med3D/train/BraTS2023_MEN_train_t1ce_label3']
-]
-
-dataset_weight = [
-    103,
-    298,
-    28,
-    # 42,
-    843,
-    # 62,
-    # 171,
-    # 700
-]
 
 sub_size = [
-    60,
-    120,
-    28,
-    # 42,
-    240,
-    # 40,
-    # 80,
-    # 135
 ]
 
 all_classes = [
