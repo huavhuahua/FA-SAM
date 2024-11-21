@@ -36,7 +36,7 @@ def build_sam3D_vit_l(checkpoint=None):
 def build_sam3D_vit_b(checkpoint=None):
     return _build_sam3D(
         # encoder_embed_dim=768,
-        encoder_embed_dim=384,  # 相比于ori，将encoder_embed_dim减半(768->384)，对应_build_sam3D中image_size加倍(128->256)
+        encoder_embed_dim=384,  
         encoder_depth=12,
         encoder_num_heads=12,
         encoder_global_attn_indexes=[2, 5, 8, 11],
