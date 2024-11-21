@@ -13,9 +13,9 @@ from transform_crop import CropOrPadWithRestore
 
 def get_dataloaders(args, cid):
     train_dataset = Dataset_Union_ALL(args, paths=img_datas[cid], transform=tio.Compose([
-        tio.ToCanonical(),  # 规范方向
+        tio.ToCanonical(),  
         tio.CropOrPad(mask_name='label', target_shape=(args.img_size,args.img_size,args.img_size)), # crop only object region
-        tio.RandomFlip(axes=(0, 1, 2)),  # 在三个空间维度上进行随机翻转
+        tio.RandomFlip(axes=(0, 1, 2)),  
     ]),
     threshold=1000)
 
@@ -42,23 +42,23 @@ class Dataset_Union_ALL(Dataset):
                  mode='train', 
                  data_type='Tr', 
                  image_size=128, 
-                 transform=None,     # tio.ToCanonical(), tio.CropOrPad(...), tio.RandomFlip(axes=(0, 1, 2)),
-                 threshold=20,      # 1000 
+                 transform=None,     
+                 threshold=20,       
                  split_num=1, split_idx=0, pcc=False):
-        # 路径相关
+
         self.args = args
         self.paths = paths
         self.data_type = data_type
-        # 控制数据集的分割
+
         self.split_num=split_num
         self.split_idx=split_idx
 
-        self._set_file_paths(self.paths)  # 得到self.image_paths, self.label_paths两个list
-        self.image_size = image_size      # 输入模型的区域尺寸，以mask为参考切分
+        self._set_file_paths(self.paths)  
+        self.image_size = image_size      
         self.transform = transform
-        self.threshold = threshold        # 过滤数据样本的阈值，label体素过少的样本被过滤
+        self.threshold = threshold        
         self.mode = mode
-        self.pcc = pcc                    # pcc setting: crop from random click point
+        self.pcc = pcc                    
 
     
     def __len__(self):
@@ -69,7 +69,6 @@ class Dataset_Union_ALL(Dataset):
         sitk_image = sitk.ReadImage(self.image_paths[index])
         sitk_label = sitk.ReadImage(self.label_paths[index])
 
-        # 确保图像和标签在物理空间中的位置和方向一致
         if sitk_image.GetOrigin() != sitk_label.GetOrigin():
             print('sitk_image.GetOrigin() != sitk_label.GetOrigin()')
             sitk_image.SetOrigin(sitk_label.GetOrigin())
@@ -78,7 +77,7 @@ class Dataset_Union_ALL(Dataset):
             sitk_image.SetDirection(sitk_label.GetDirection())
 
         subject = tio.Subject(
-            image = tio.ScalarImage.from_sitk(sitk_image),   # 转换为 TorchIO 的标量图像
+            image = tio.ScalarImage.from_sitk(sitk_image),   
             label = tio.LabelMap.from_sitk(sitk_label),
         )
 
@@ -87,7 +86,6 @@ class Dataset_Union_ALL(Dataset):
         if self.transform:
             try:
                 subject = self.transform(subject)
-                '''------检查确认Transform之后的图像是否符合预期------'''
                 # tio.ScalarImage(tensor=subject.image.data).save(f"AAAsomething_check/transformed_image_{index}.nii.gz")
                 # tio.LabelMap(tensor=subject.label.data).save(f"AAAsomething_check/transformed_label_{index}.nii.gz")
 
@@ -112,7 +110,6 @@ class Dataset_Union_ALL(Dataset):
                 subject = tio.CropOrPad(mask_name='crop_mask', 
                                         target_shape=(self.image_size,self.image_size,self.image_size))(subject)
 
-        # 过滤label过少的样本
         if subject.label.data.sum() <= self.threshold:
             return self.__getitem__(np.random.randint(self.__len__()))
         
@@ -159,7 +156,7 @@ class Dataset_Union_ALL_Val(Dataset_Union_ALL):
 
 class Union_Dataloader(DataLoader):
     def __iter__(self):
-        return BackgroundGenerator(super().__iter__())  # 多线程异步生成器
+        return BackgroundGenerator(super().__iter__())  
 
 
 class Test_Single(Dataset): 
