@@ -197,26 +197,9 @@ class ALA:
 
         
 def create_subset_dataloader(original_dataloader, subset_size):
-    """
-    从原始数据加载器中随机抽取部分数据形成新的数据加载器。
-
-    Args:
-        original_dataloader: 原始数据加载器。
-        subset_size (int): 要抽取的样本数量。
-
-    Returns:
-        DataLoader: 包含抽取的样本的新数据加载器。
-    """
-    # 获取原始数据集的大小
     dataset_size = len(original_dataloader.dataset)
-
-    # 使用 SubsetRandomSampler 从原始数据集中随机抽取指定数量的样本
     subset_indices = torch.randperm(dataset_size)[:subset_size]
-
-    # 使用抽取的索引创建 SubsetRandomSampler 对象
     subset_sampler = SubsetRandomSampler(subset_indices)
-
-    # 使用 SubsetRandomSampler 创建新的 DataLoader 对象
     subset_dataloader = DataLoader(original_dataloader.dataset, 
                                     batch_size=original_dataloader.batch_size, 
                                     sampler=subset_sampler, 
