@@ -26,9 +26,9 @@ def main(args):
 
     if args.multi_gpu:
         mp.spawn(
-            main_worker,   # 每个进程执行的工作函数
-            nprocs=args.world_size,  # 进程数 即总的GPU数量
-            args=(args, )   # 每个进程传入参数
+            main_worker,   
+            nprocs=args.world_size,  
+            args=(args, )   
         )
     else:
         random.seed(2023)
