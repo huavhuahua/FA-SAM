@@ -5,9 +5,7 @@ from segment_anything.build_sam3D import sam_model_registry3D
 
 
 def freeze_control(args, model):
-    # 加载整个预训练模型的权重
     pretrained_state_dict = torch.load(args.sam_ckpt, map_location='cpu')['model_state_dict']
-    # 将整个预训练模型的权重加载到模型
     model.load_state_dict(pretrained_state_dict, strict=False)
 
     unfreeze_layers = [
